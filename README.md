@@ -1,66 +1,49 @@
-﻿# crypto-data-fetcher
-Cryptocurrency Data Fetcher
-This project fetches the latest prices of Bitcoin, Ethereum, and Matic from the CoinGecko API every 2 hours and stores the data in a MongoDB database.
+# Crypto Data Fetcher
 
-Table of Contents
-Features
-Technologies Used
-Installation
-Usage
-Environment Variables
+This project fetches the latest cryptocurrency data (Bitcoin, Matic, and Ethereum) such as price in USD, market capitalization, and 24-hour percentage change using the CoinGecko API and stores it in a MongoDB database. It runs every two hours as a background job and saves the data for future reference.
+
+## Features
+
+- Fetches current cryptocurrency prices for Bitcoin, Matic, and Ethereum.
+- Stores price, market capitalization, and 24-hour change in MongoDB.
+- Scheduled background job runs every two hours to update the data.
+
+## Tech Stack
+
+- **Node.js**
+- **Express.js**
+- **MongoDB (using MongoDB Atlas)**
+- **Mongoose**
+- **CoinGecko API**
+
+## Project Setup
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/en/) (v14+)
+- [MongoDB Atlas Account](https://www.mongodb.com/cloud/atlas)
+- [Git](https://git-scm.com/)
+  
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/yuvrajsingh2428/crypto-data-fetcher.git
+
+2. **Navigate to the project folder:**
+    cd crypto-data-fetcher
+3. **Install dependencies:**
+    npm install
+4. **Set up the environment variables:**
+    Create a .env file in the root of your project and add the following:
+      MONGO_URI=<Your MongoDB Atlas Connection String>
+      API_KEY=<Your CoinGecko API Key>
+5. **Run the project:**
+   npm start
 
 
-Features
-Fetch Crypto Data: The app fetches the latest prices of 3 cryptocurrencies (Bitcoin, Ethereum, and Matic) in USD.
-Store in MongoDB: The fetched data is saved to a MongoDB database, including fields for:
-Cryptocurrency name and symbol
-Price in USD
-(Optional) Market cap and 24-hour percentage change.
-Scheduled Job: The fetching process runs automatically every 2 hours to keep data up-to-date.
-Technologies Used
-Node.js: Backend framework.
-MongoDB: NoSQL database to store cryptocurrency data.
-CoinGecko API: Third-party API to fetch real-time crypto data.
-Mongoose: ODM for MongoDB to define schema and perform database operations.
-Node-Cron: (Optional) For scheduling recurring jobs.
-Installation
-Clone the repository to your local machine:
 
-bash
-Copy code
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-Install dependencies:
 
-bash
-Copy code
-npm install
-Set up MongoDB by either:
-
-Using a local MongoDB instance, or
-Setting up a cloud database on MongoDB Atlas (recommended).
-Create a .env file in the root directory and add the necessary environment variables (see below).
-
-Usage
-Run the Fetching Script:
-
-To manually fetch the crypto data, run:
-
-bash
-Copy code
-node scripts/fetchCryptoData.js
-Automate Fetching Every 2 Hours:
-
-To schedule the job to run automatically every 2 hours, integrate node-cron in your project or deploy the project on a platform with background job support (e.g., Heroku Scheduler, AWS Lambda).
-
-Environment Variables
-Create a .env file in the root of your project and include the following:
-
-bash
-Copy code
-MONGODB_URI=mongodb+srv://your-username:your-password@cluster0.mongodb.net/your-db-name
-COINGECKO_API_KEY=your-api-key-here
-Variables:
-
-MONGODB_URI: The connection string for MongoDB (from Atlas or local).
-COINGECKO_API_KEY: Your CoinGecko API Key. You can sign up on the CoinGecko Developer Portal to get one.
